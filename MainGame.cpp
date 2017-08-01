@@ -23,8 +23,9 @@ MainGame::MainGame()
 	std::cout << "CONSTRUCTOR5" << std::endl;
 	_state = GameState::PLAY;
 	std::cout << "CONSTRUCTOR6" << std::endl;
-	//DOESNT WORK ON MAC
-	//glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+	#ifndef __APPLE__
+		glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+	#endif
 	std::cout << "CONSTRUCTOR7" << std::endl;
 }
 
