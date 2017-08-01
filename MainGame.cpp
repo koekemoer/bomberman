@@ -13,7 +13,10 @@ void 	fatalError(std::string errorStr)
 MainGame::MainGame()
 {
 	_window = nullptr;
-	_surface = nullptr;
+	_screenSurface = nullptr;
+	sprite = SDL_LoadBMP("sprite.bmp");
+	_bmbrman.x = 0;
+	_bmbrman.y = 0;
 	_screenW = 1024;
 	_screenH = 768;
 	_state = GameState::PLAY;
@@ -29,8 +32,6 @@ MainGame::~MainGame() {
 // main game
 void	MainGame::run() {
 	initSystems();
-
-	//_sprite.init(-1.0f, -1.0f, 1.0f, 1.0f);
 
 	gameLoop();
 }
@@ -52,6 +53,12 @@ void	MainGame::initSystems() {
 		fatalError("SDL_GL could not be created");
 	}
 
+	_screenSurface = SDL_GetWindowSurface(_window);
+
+	int	colorkey;
+	colorkey = SDL_MapRGB(_screenSurface->format, 255, 0, 255);
+    SDL_SetColorKey(sprite, SDL_TRUE, colorkey);
+
 	//not needed, but for when hardware doesnt' exactly support certain stuff
 	/*glewExperimental = true;
 	GLenum error = glewInit();
@@ -61,8 +68,6 @@ void	MainGame::initSystems() {
 
 	//instead of having one window that draws and clears, have 2 windows essentially - much smoother
 	SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
-
-
 }
 
 void 	MainGame::gameLoop() {
@@ -84,9 +89,10 @@ void 	MainGame::processInput() {
 				_state = GameState::EXIT;
 				break;
 			case SDL_MOUSEMOTION:
-				std::cout << evnt.motion.x << " " << evnt.motion.y << std::endl;
+				//std::cout << evnt.motion.x << " " << evnt.motion.y << std::endl;
 				break;
 			case SDL_KEYDOWN:
+				SDL_FillRect(_screenSurface,NULL,0x000000);
 				switch (evnt.key.keysym.sym)
 				{
 					case SDLK_r:
@@ -104,10 +110,22 @@ void 	MainGame::processInput() {
 					case SDLK_q:
 						_state = GameState::EXIT;
 						break;
+					case SDLK_UP:
+						_bmbrman.y -= 2;
+						break;
+					case SDLK_DOWN:
+						_bmbrman.y += 2;
+						break;
+					case SDLK_RIGHT:
+						_bmbrman.x += 2;
+						break;
+					case SDLK_LEFT:
+						_bmbrman.x -= 2;
+						break;
 				}
 				break;
 		}
-
+		SDL_BlitSurface(sprite, NULL, _screenSurface, &_bmbrman);
 	}
 }
 
@@ -117,12 +135,11 @@ void 	MainGame::drawGame() {
 
 	//_sprite.draw();
 	//Swap buffer and draw everything to screen
-	SDL_GL_SwapWindow(_window);
-
+	//SDL_GL_SwapWindow(_window);
 	//Get Window Surface
-	/*_surface = SDL_GetWindowSurface(_window);
+	//_surface = SDL_GetWindowSurface(_window);
 	//Fill Surface White
-	SDL_FillRect(_surface, NULL, SDL_MapRGB(_surface->format, 0xFF, 0xFF, 0xFF));
+	//SDL_FillRect(_surface, NULL, SDL_MapRGB(_surface->format, 0xFF, 0xFF, 0xFF));
 	//Update Surface
-	SDL_UpdateWindowSurface(_window);*/
+	SDL_UpdateWindowSurface(_window);
 }

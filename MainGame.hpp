@@ -4,14 +4,10 @@
 #ifndef MAINGAME_HPP
 # define MAINGAME_HPP
 
-//#include "Sprite.hpp"
-
+//# include "Entity.hpp"
 #ifdef __APPLE__
 #   include <SDL2/SDL.h>
-//#   include <SDL2/SDL.h>
 #   include <OpenGL/gl.h>
-//#   include <SDL2/SDL_open_gl.h>
-//#   include <GL/gl.h>
 #else
 #   include <SDL2/SDL.h>
 #   include <GL/gl.h>
@@ -33,13 +29,18 @@ private:
     void	initSystems();
     void    drawGame();
 
-	SDL_Window*	 _window;
-    SDL_Surface* _surface;
-	int 		 _screenW;
-	int 		 _screenH;
-    GameState    _state;
+	SDL_Window*	    _window;
+    SDL_Surface*    _screenSurface;
+    
+    SDL_Surface*	sprite;
+    SDL_Rect        _bmbrman;
 
-	//Sprite _sprite;
+    //SDL_Renderer*   _renderer;
+	int 		    _screenW;
+	int 		    _screenH;
+    GameState       _state;
+
+
 
 };
 
