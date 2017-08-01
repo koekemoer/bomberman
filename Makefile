@@ -29,9 +29,10 @@ GFX_LIBS	= $(SDL2_LIBS) $(GL_LIBS)
 
 #SDL_INC = -I/goinfre/lkoekemo/.brew/include
 #SDL_LIB = -L/goinfre/lkoekemo/.brew/lib
-APPLE_FLAGS = -framework OpenGL -framework SDL2#-framework OpenGL -lglew -lglfw -lGL -lglut -lGLEW
-LINUX_FLAGS = -lGL -lSDL2
 
+#APPLE_FLAGS = -framework OpenGL -framework SDL2#-framework OpenGL -lglew -lglfw -lGL -lglut -lGLEW
+APPLE_FLAGS = -framework OpenGL -framework SDL2
+LINUX_FLAGS = -lGL -lSDL2
 #ifeq ($(OS),Apple)
     # ARNO: COMPILE := $(CC) $(SRC) -o $(NAME) -I $(INCLUDES) -L $(FTDIR) -lft $(MAC_GL_FLAGS) $(SDL_FLAGS)
 	#COMPILE := $(CC) $(OBJS) -o $(NAME) $(LINKER_FLAGS)
@@ -41,6 +42,11 @@ LINUX_FLAGS = -lGL -lSDL2
 	#COMPILE := $(CC) $(OBJS) $(LINKER_FLAGS) -o $(NAME)
     #COMPILE := $(CC) $(C_FLAGS) $(GL_FLAGS) $(SDL_FLAGS) -I $(INCLUDES) $(SRC) -o $(NAME) -L $(FTDIR) -lft 
 #endif
+ifeq ($(OS),Apple)
+	COMPILE := $(CC) $(C_FLAGS) $(OBJS) $(APPLE_FLAGS) -o $(NAME)
+else
+	COMPILE := $(CC) $(C_FLAGS) $(OBJS) $(LINUX_FLAGS) -o $(NAME)
+endif
 
 all: $(OBJS)
 		$(CC) $(C_FLAGS) $(OBJS) $(APPLE_FLAGS) -o $(NAME)

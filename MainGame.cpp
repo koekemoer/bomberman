@@ -12,21 +12,14 @@ void 	fatalError(std::string errorStr)
 
 MainGame::MainGame()
 {
-	std::cout << "CONSTRUCTOR1" << std::endl;
 	_window = nullptr;
-	std::cout << "CONSTRUCTOR2" << std::endl;
 	_surface = nullptr;
-	std::cout << "CONSTRUCTOR3" << std::endl;
 	_screenW = 1024;
-	std::cout << "CONSTRUCTOR4" << std::endl;
 	_screenH = 768;
-	std::cout << "CONSTRUCTOR5" << std::endl;
 	_state = GameState::PLAY;
-	std::cout << "CONSTRUCTOR6" << std::endl;
 	#ifndef __APPLE__
 		glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 	#endif
-	std::cout << "CONSTRUCTOR7" << std::endl;
 }
 
 MainGame::~MainGame() {
