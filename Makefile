@@ -1,4 +1,4 @@
-OBJS = *.cpp
+OBJS = main.cpp MainGame.cpp
 
 NAME = game_tut
 
@@ -13,14 +13,15 @@ C_FLAGS = -Wall -Werror -Wextra
 #SDL_FLAGS =$(shell sdl-config --cflags)
 #SDL_LIBS = $(shell sdl-config --libs)
 
-SDL2_FLAGS	:= $(shell pkg-config --cflags sdl2) #-lm
-SDL2_LIBS	:= $(shell pkg-config --libs sdl2)
+#SDL2_FLAGS	:= $(shell pkg-config --cflags sdl2) #-lm
+#SDL2_LIBS	:= $(shell pkg-config --libs sdl2)
 #GL_FLAGS	= -lGL
 
-GL_FLAGS 	:= $(shell pkg-config --cflags gl)
-GL_LIBS		:= $(shell pkg-config --libs gl)
+#GL_FLAGS 	:= $(shell pkg-config --cflags gl)
+#GL_LIBS		:= $(shell pkg-config --libs gl)
 
 GFX_FLAGS	= $(SDL2_FLAGS) $(GL_FLAGS)
+GFX_LIBS	= $(SDL2_LIBS) $(GL_LIBS)
 
 #INCLUDE_PATHS = -I/usr/local/include -I/opt/X11/include -I/goinfre/aswanepo/.brew/Cellar/glew/2.0.0/include -I/goinfre/aswanepo/.brew/Cellar/glfw/3.2.1/include/
 
@@ -28,15 +29,21 @@ GFX_FLAGS	= $(SDL2_FLAGS) $(GL_FLAGS)
 
 #SDL_INC = -I/goinfre/lkoekemo/.brew/include
 #SDL_LIB = -L/goinfre/lkoekemo/.brew/lib
-LINKER_FLAGS = -lSDL2 -lGL -lGLEW #-framework OpenGL -lglew -lglfw -lGL -lglut -lGLEW
+APPLE_FLAGS = -framework OpenGL -framework SDL2#-framework OpenGL -lglew -lglfw -lGL -lglut -lGLEW
+LINUX_FLAGS = -lGL -lSDL2
+
+#ifeq ($(OS),Apple)
+    # ARNO: COMPILE := $(CC) $(SRC) -o $(NAME) -I $(INCLUDES) -L $(FTDIR) -lft $(MAC_GL_FLAGS) $(SDL_FLAGS)
+	#COMPILE := $(CC) $(OBJS) -o $(NAME) $(LINKER_FLAGS)
+#else
+    #c++ $(LDFLAGS) -o $@ $^ $(LIBS)
+    #COMPILE := $(CC) $(CXXFLAGS) $(SRC) -o $(NAME) -I $(INCLUDES) -L $(LIBS)
+	#COMPILE := $(CC) $(OBJS) $(LINKER_FLAGS) -o $(NAME)
+    #COMPILE := $(CC) $(C_FLAGS) $(GL_FLAGS) $(SDL_FLAGS) -I $(INCLUDES) $(SRC) -o $(NAME) -L $(FTDIR) -lft 
+#endif
 
 all: $(OBJS)
-		$(CC) $(OBJS) $(LINKER_FLAGS) -o $(NAME)
+		$(CC) $(C_FLAGS) $(OBJS) $(APPLE_FLAGS) -o $(NAME)
 
 clean:
 	@rm -f $(NAME)
-
-#fclean: clean
-	#@rm -f $(NAME)
-
-#re: fclean all

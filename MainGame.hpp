@@ -6,9 +6,12 @@
 
 //#include "Sprite.hpp"
 
-#ifdef APPLE
-#   include <SDL/SDL.h>
-#   include <OpenGL/GL.h>
+#ifdef __APPLE__
+#   include <SDL2/SDL.h>
+//#   include <SDL2/SDL.h>
+#   include <OpenGL/gl.h>
+//#   include <SDL2/SDL_open_gl.h>
+//#   include <GL/gl.h>
 #else
 #   include <SDL2/SDL.h>
 #   include <GL/gl.h>
