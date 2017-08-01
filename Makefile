@@ -42,14 +42,18 @@ LINUX_FLAGS = -lGL -lSDL2
 	#COMPILE := $(CC) $(OBJS) $(LINKER_FLAGS) -o $(NAME)
     #COMPILE := $(CC) $(C_FLAGS) $(GL_FLAGS) $(SDL_FLAGS) -I $(INCLUDES) $(SRC) -o $(NAME) -L $(FTDIR) -lft 
 #endif
-ifeq ($(OS),Apple)
+OS := $(shell uname)
+ifeq ($(OS),Darwin)
 	COMPILE := $(CC) $(C_FLAGS) $(OBJS) $(APPLE_FLAGS) -o $(NAME)
 else
 	COMPILE := $(CC) $(C_FLAGS) $(OBJS) $(LINUX_FLAGS) -o $(NAME)
 endif
 
+#all: $(OBJS)
+		#$(CC) $(C_FLAGS) $(OBJS) $(APPLE_FLAGS) -o $(NAME)
+
 all: $(OBJS)
-		$(CC) $(C_FLAGS) $(OBJS) $(APPLE_FLAGS) -o $(NAME)
+		$(COMPILE)
 
 clean:
 	@rm -f $(NAME)
