@@ -34,6 +34,7 @@ private:
     
     SDL_Surface*	sprite;
     SDL_Rect        _bmbrman;
+    //Entity          _bmbrman;
 
     //SDL_Renderer*   _renderer;
 	int 		    _screenW;

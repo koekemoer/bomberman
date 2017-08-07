@@ -16,7 +16,9 @@ MainGame::MainGame()
 	_screenSurface = nullptr;
 	sprite = SDL_LoadBMP("sprite.bmp");
 	_bmbrman.x = 0;
+	//_bmbrman._posX = 0;
 	_bmbrman.y = 0;
+	//_bmbrman._posY = 0;
 	_screenW = 1024;
 	_screenH = 768;
 	_state = GameState::PLAY;
@@ -112,15 +114,19 @@ void 	MainGame::processInput() {
 						break;
 					case SDLK_UP:
 						_bmbrman.y -= 2;
+						//_bmbrman.moveUp();
 						break;
 					case SDLK_DOWN:
 						_bmbrman.y += 2;
+						//_bmbrman.moveDown();
 						break;
 					case SDLK_RIGHT:
 						_bmbrman.x += 2;
+						//_bmbrman.moveRight();
 						break;
 					case SDLK_LEFT:
 						_bmbrman.x -= 2;
+						//_bmbrman.moveLeft();
 						break;
 				}
 				break;
