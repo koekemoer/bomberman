@@ -4,7 +4,7 @@
 #include "bomberman.hpp"
 #include "MainGame.hpp"
 
-int     main(int ac, char** av)
+int    main(int ac, char** av)
 {
     if (ac == 1 && av[1] == nullptr)
         ;
