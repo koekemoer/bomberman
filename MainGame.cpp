@@ -89,8 +89,8 @@ void 	MainGame::gameLoop() {
 				break;
 			}
 		}*/
-		SplashScreen *screen = new SplashScreen;
-		screen->draw();
+		//SplashScreen *screen = new SplashScreen;
+		//splash->draw();
 		processInput();
 		drawGame();
 	}

@@ -17,6 +17,10 @@ class SplashScreen: public MainGame
 
     private:
         std::vector<SDL_Surface*> images;
+    
+        SDL_Renderer    *renderer;
+        SDL_Surface     *imgSurface;
+        SDL_Texture     *texture;
 
         void    init();
 

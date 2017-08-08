@@ -40,6 +40,8 @@ private:
 
     //SDL_Renderer*   _renderer;
 
+    //SplashScreen    *splash;
+
 protected:
     SDL_Window*	    _window;
     SDL_Surface*    _screenSurface;
