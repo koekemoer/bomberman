@@ -1,7 +1,7 @@
 
 //#include <SDL/SDL.h>
 //#include <GL/GL.h>
-#include <iostream>
+#include "bomberman.hpp"
 #include "MainGame.hpp"
 
 int     main(int ac, char** av)

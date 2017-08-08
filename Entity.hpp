@@ -19,5 +19,4 @@ class   Entity {
         int     _posY;
 };
 
-
 #endif

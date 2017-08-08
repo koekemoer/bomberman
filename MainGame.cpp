@@ -74,7 +74,23 @@ void	MainGame::initSystems() {
 
 void 	MainGame::gameLoop() {
 	while (_state != GameState::EXIT)
+	//while (SDL_PollEvent(&evnt))
 	{
+		/*switch (_state)
+		{
+			case GameState::PLAY:
+			{
+
+				break;
+			}
+			case GameState::SHOWSPLASH:
+			{
+
+				break;
+			}
+		}*/
+		SplashScreen *screen = new SplashScreen;
+		screen->draw();
 		processInput();
 		drawGame();
 	}
@@ -136,8 +152,8 @@ void 	MainGame::processInput() {
 }
 
 void 	MainGame::drawGame() {
-	glClearDepth(1.0);
-	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+	//glClearDepth(1.0);
+	//glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 	//_sprite.draw();
 	//Swap buffer and draw everything to screen

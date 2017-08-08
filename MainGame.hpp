@@ -4,16 +4,11 @@
 #ifndef MAINGAME_HPP
 # define MAINGAME_HPP
 
-//# include "Entity.hpp"
-#ifdef __APPLE__
-#   include <SDL2/SDL.h>
-#   include <OpenGL/gl.h>
-#else
-#   include <SDL2/SDL.h>
-#   include <GL/gl.h>
-#endif
+#include "Entity.hpp"
+#include "bomberman.hpp"
+#include "SplashScreen.hpp"
 
-enum class GameState {PLAY, EXIT};
+enum class GameState {UNINITIALIZED, SHOWSPLASH, PLAY, PAUSE, EXIT};
 
 class   MainGame
 {
@@ -29,8 +24,8 @@ private:
     void	initSystems();
     void    drawGame();
 
-	SDL_Window*	    _window;
-    SDL_Surface*    _screenSurface;
+	//SDL_Window*	    _window;
+    //SDL_Surface*    _screenSurface;
     
     SDL_Surface*	sprite;
     SDL_Rect        _bmbrman;
@@ -41,7 +36,9 @@ private:
 	int 		    _screenH;
     GameState       _state;
 
-
+protected:
+    SDL_Window*	    _window;
+    SDL_Surface*    _screenSurface;
 
 };
 
