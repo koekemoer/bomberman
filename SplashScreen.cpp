@@ -1,10 +1,12 @@
-
+//#include "MainGame.hpp"
 #include "SplashScreen.hpp"
 
 SplashScreen::SplashScreen()
 {
     init();
 }
+
+SplashScreen::~SplashScreen() {}
 
 void    SplashScreen::init()
 {

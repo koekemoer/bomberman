@@ -1,13 +1,12 @@
 #ifndef SPLASHSCREEN_HPP
 # define SPLASHSCREEN_HPP
 
-#include "bomberman.hpp"
-//#include <SDL2/SDL2_image.h>
 #include "MainGame.hpp"
+#include "bomberman.hpp"
 
 #include <vector>
 
-class SplashScreen: public MainGame
+class SplashScreen: public MainGame 
 {
     public:
         SplashScreen();

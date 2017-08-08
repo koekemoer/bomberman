@@ -9,8 +9,8 @@
 #   include <GL/gl.h>
 #endif
 
-#include <SDL2/SDL2_image.h>
-#include <SDL2/SDL_image.h>
+//#include <SDL2/SDL2_image.h>
+//#include <SDL2/SDL_image.h>
 
 #include <iostream>
 

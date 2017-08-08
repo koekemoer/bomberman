@@ -165,3 +165,7 @@ void 	MainGame::drawGame() {
 	//Update Surface
 	SDL_UpdateWindowSurface(_window);
 }
+
+int		MainGame::getScreenW() { return this->_screenW; }
+
+int		MainGame::getScreenH() { return this->_screenH; }
